@@ -26,6 +26,9 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# Ignore cassettes
+spec/cassettes/
+
 # Ignore application configuration
 /config/application.yml
 /public/packs
