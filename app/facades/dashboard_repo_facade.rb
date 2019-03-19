@@ -8,7 +8,7 @@ class DashboardRepoFacade
     response = service.get_repos
     response.map do |repo_data|
       Repo.new(repo_data)
-    end
+    end[0..4]
   end
 
   def service

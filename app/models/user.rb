@@ -7,4 +7,8 @@ class User < ApplicationRecord
   validates_presence_of :first_name
   enum role: [:default, :admin]
   has_secure_password
+
+  def self.find_token(user_id)
+    where(id: user_id).pluck(:token)[0]
+  end
 end

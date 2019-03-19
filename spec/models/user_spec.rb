@@ -22,4 +22,13 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe '::find_token(user_id)' do
+    it 'returns the token for the specified user' do
+      user = create(:user, token: "ailrtjpoaerihgoaeirihgoarihjgoaerjg")
+      create(:user, token: "zoidjtoainewgorngoaitrfgoigjsroitgr")
+
+      expect(User.find_token(user.id)).to eq(user.token)
+    end
+  end
 end
