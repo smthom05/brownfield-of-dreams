@@ -1,7 +1,7 @@
 require 'rails_helper'
 describe DashboardRepoFacade do
   it 'exists' do
-    token = {}
+    token = "token"
     drf = DashboardRepoFacade.new(token)
 
     expect(drf).to be_a(DashboardRepoFacade)
@@ -9,10 +9,12 @@ describe DashboardRepoFacade do
   describe 'instance methods' do
     describe '#repos' do
       it 'returns five repos' do
-        token = {}
-        drf = DashboardRepoFacade.new(token)
+        VCR.use_cassette('github_current_users_repos') do
+          token = ENV["github_user_token"]
+          drf = DashboardRepoFacade.new(token)
 
-        drf.repos
+          drf.repos
+        end
       end
     end
   end

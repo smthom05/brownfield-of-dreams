@@ -6,8 +6,8 @@ class DashboardRepoFacade
 
   def repos
     response = service.get_repos
-    response.map do |repo|
-      Repo.new(repo)
+    response.map do |repo_data|
+      Repo.new(repo_data)
     end
   end
 
