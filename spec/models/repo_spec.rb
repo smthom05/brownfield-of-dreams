@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Repo" do
   it 'exists' do
-    data = {name: 'x', owner: {url: 'x'}}
+    data = {name: 'x', html_url: 'x'}
     repo = Repo.new(data)
 
     expect(repo).to be_a(Repo)
@@ -10,7 +10,7 @@ describe "Repo" do
 
   describe 'attributes' do
     it 'has a name and url' do
-      data = {name: 'name', owner: {url: 'url'}}
+      data = {name: 'name', html_url: 'url'}
       repo = Repo.new(data)
 
       expect(repo.name).to eq('name')

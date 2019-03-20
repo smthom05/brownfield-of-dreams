@@ -5,7 +5,7 @@ class Repo
 
   def initialize(data)
     @name = data[:name]
-    @url = data[:owner][:url]
+    @url = data[:html_url]
   end
 
 end
