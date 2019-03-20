@@ -23,6 +23,20 @@ describe GithubService do
         end
       end
     end
+
+    describe '#get_followers' do
+      it 'returns a hash of github followers data' do
+        VCR.use_cassette("github_current_users_followers") do
+          token = ENV["github_user_token"]
+          service = GithubService.new(token)
+
+          result = service.get_followers
+
+          expect(result).to be_a(Array)
+          expect(result[0]).to have_key(:id)
+        end
+      end
+    end
   end
 
 end
