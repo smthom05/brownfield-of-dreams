@@ -3,17 +3,20 @@ require 'spec_helper'
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 
-abort("The Rails environment is running in production mode!") if Rails.env.production?
+abort('The Rails environment is running in production mode!') if Rails.env.production?
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
+require 'support/helpers/authentication'
 
 VCR.configure do |config|
   config.ignore_localhost = true
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
-  config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<YOUTUBE_API_KEY>') { ENV['YOUTUBE_API_KEY'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN_1>') { ENV['github_user_token'] }
+  config.filter_sensitive_data('<GITHUB_TOKEN_2>') { ENV['github_other_token'] }
   # config.allow_http_connections_when_no_cassette = true
 end
 
@@ -30,7 +33,7 @@ Capybara.configure do |config|
   config.default_max_wait_time = 5
 end
 
-SimpleCov.start "rails"
+SimpleCov.start 'rails'
 
 Shoulda::Matchers.configure do |config|
     config.integrate do |with|
