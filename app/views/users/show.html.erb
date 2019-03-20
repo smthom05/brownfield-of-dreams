@@ -32,5 +32,16 @@
       <% end %>
       </ul>
     </section>
+
+    <section class='following'>
+      <h1>Following</h1>
+      <ul>
+      <% facade.following.each do |f| %>
+        <li class='followed-user'>
+          <%= link_to f.handle, f.url, class: "following-name" %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
   <% end %>
 </section>

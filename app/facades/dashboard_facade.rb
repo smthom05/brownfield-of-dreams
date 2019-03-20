@@ -22,4 +22,11 @@ class DashboardFacade
     end
   end
 
+  def following
+    response = service.get_following
+    response.map do |following_data|
+      Following.new(following_data)
+    end
+  end
+
 end
