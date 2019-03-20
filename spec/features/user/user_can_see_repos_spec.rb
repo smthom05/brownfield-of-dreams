@@ -22,7 +22,7 @@ feature 'As a logged in user' do
 
     it 'sees a list of five repos' do
       VCR.use_cassette('github_current_users_repos') do
-        user = create(:user, token: ENV[])
+        user = create(:user, token: ENV['github_user_token'])
 
         visit '/'
 

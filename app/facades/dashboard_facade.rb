@@ -1,4 +1,4 @@
-class DashboardRepoFacade
+class DashboardFacade
 
   def initialize(user_token)
     @user_token = user_token
@@ -13,6 +13,13 @@ class DashboardRepoFacade
 
   def service
     GithubService.new(@user_token)
+  end
+
+  def followers
+    response = service.get_followers
+    response.map do |follower_data|
+      Follower.new(follower_data)
+    end
   end
 
 end
