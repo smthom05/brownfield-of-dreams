@@ -11,8 +11,10 @@
     <h1>Bookmarked Segments</h1>
   </section>
   <% if current_user.token %>
-    <section class='github'>
-      <h1>GitHub</h1>
+  <section class='github'>
+    <h1>GitHub</h1>
+    <section class='repos'>
+      <h2>Repositories</h2>
       <ul>
       <% facade.repos.each do |repo| %>
         <li class='repo'>
@@ -21,5 +23,16 @@
       <% end %>
       </ul>
     </section>
+    <section class='followers'>
+      <h2>Followers</h2>
+      <ul>
+      <% facade.followers.each do |follower| %>
+        <li class='follower'>
+          <%= link_to follower.handle, follower.url, class: follower.handle %>
+        </li>
+      <% end %>
+      </ul>
+    </section>
+  </section>
   <% end %>
 </section>

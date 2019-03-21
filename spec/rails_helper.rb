@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 require 'support/helpers/authentication'
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 VCR.configure do |config|
   config.ignore_localhost = true
@@ -52,4 +53,6 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
 
   config.filter_rails_from_backtrace!
+
+  config.include Helpers::Authentication, type: :feature
 end
