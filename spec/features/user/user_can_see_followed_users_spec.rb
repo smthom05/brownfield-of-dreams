@@ -3,9 +3,9 @@ require  'rails_helper'
 feature "As a logged in user" do
   context 'when visiting /dashboard' do
     it 'sees all followed users' do
-      VCR.use_cassette('github_current_users_followed', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_current_users_repos', :allow_playback_repeats => true) do
         VCR.use_cassette('github_current_users_followers', :allow_playback_repeats => true) do
-          VCR.use_cassette('github_current_users_repos', :allow_playback_repeats => true) do
+          VCR.use_cassette('github_current_users_followed', :allow_playback_repeats => true) do
             user = create(:user, token: ENV['github_user_token'])
             login_as(user)
 
