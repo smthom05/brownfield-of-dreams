@@ -12,6 +12,10 @@ class GithubService
     get_json("/user/followers")
   end
 
+  def get_followed
+    get_json('/user/following')
+  end
+
   def get_json(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

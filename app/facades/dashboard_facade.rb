@@ -18,6 +18,13 @@ class DashboardFacade
     end
   end
 
+  def followed
+    response = service.get_followed
+    response.map do |followed_data|
+      Followed.new(followed_data)
+    end
+  end
+
   def service
     GithubService.new(@user_token)
   end

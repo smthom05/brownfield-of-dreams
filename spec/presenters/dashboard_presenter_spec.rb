@@ -30,5 +30,16 @@ describe DashboardFacade do
       end
     end
 
+    describe '#followed' do
+      it 'returns all followed users' do
+        VCR.use_cassette('github_current_users_followed') do
+          token = ENV['github_user_token']
+          df = DashboardFacade.new(token)
+
+          df.followed
+        end
+      end
+    end
+
   end
 end
