@@ -65,38 +65,29 @@ feature 'As a logged in user' do
     end
 
     it 'sees only five repos of current user' do
-      VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
-        VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
+        VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
+          VCR.use_cassette('github_other_users_followed', :allow_playback_repeats => true) do
 
-          user_2 = create(:user, token: ENV['github_other_token'])
+            user_2 = create(:user, token: ENV['github_other_token'])
 
-          visit '/'
+            login_as(user_2)
 
-          click_on 'Sign In'
-
-          expect(current_path).to eq(login_path)
-
-          fill_in 'session[email]', with: user_2.email
-          fill_in 'session[password]', with: user_2.password
-
-          click_on 'Log In'
-
-          save_and_open_page
-
-          within(page.all('.repo')[0]) do
-            expect(page).to have_link('little_shop', href: 'https://github.com/aprildagonese/little_shop')
-          end
-          within(page.all('.repo')[1]) do
-            expect(page).to_not have_link('book_club', href: 'https://github.com/n-flint/book_club')
-          end
-          within(page.all('.repo')[2]) do
-            expect(page).to_not have_link('activerecord-obstacle-course', href: 'https://github.com/PeregrineReed/activerecord-obstacle-course')
-          end
-          within(page.all('.repo')[3]) do
-            expect(page).to_not have_link('activerecord_exploration', href: 'https://github.com/PeregrineReed/activerecord_exploration')
-          end
-          within(page.all('.repo')[4]) do
-            expect(page).to_not have_link('apollo_14', href: 'https://github.com/PeregrineReed/apollo_14')
+            within(page.all('.repo')[0]) do
+              expect(page).to have_link('little_shop', href: 'https://github.com/aprildagonese/little_shop')
+            end
+            within(page.all('.repo')[1]) do
+              expect(page).to_not have_link('book_club', href: 'https://github.com/n-flint/book_club')
+            end
+            within(page.all('.repo')[2]) do
+              expect(page).to_not have_link('activerecord-obstacle-course', href: 'https://github.com/PeregrineReed/activerecord-obstacle-course')
+            end
+            within(page.all('.repo')[3]) do
+              expect(page).to_not have_link('activerecord_exploration', href: 'https://github.com/PeregrineReed/activerecord_exploration')
+            end
+            within(page.all('.repo')[4]) do
+              expect(page).to_not have_link('apollo_14', href: 'https://github.com/PeregrineReed/apollo_14')
+            end
           end
         end
       end
