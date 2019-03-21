@@ -65,8 +65,8 @@ feature 'As a logged in user' do
     end
 
     it 'sees only five repos of current user' do
-      VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
-        VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
+        VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
 
           user_2 = create(:user, token: ENV['github_other_token'])
 
