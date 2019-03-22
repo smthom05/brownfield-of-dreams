@@ -17,7 +17,7 @@ feature 'As a logged in user' do
 
       click_on 'Log In'
 
-      expect(page).to_not have_content("GitHub")
+      expect(page).to_not have_content("Repositories")
     end
 
     it 'sees a list of five repos' do
