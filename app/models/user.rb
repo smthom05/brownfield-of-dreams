@@ -1,6 +1,10 @@
 class User < ApplicationRecord
   has_many :user_videos
   has_many :videos, through: :user_videos
+  has_many :users, foreign_key: :user_id,
+                   class_name: 'Friend',
+                   dependent: :destroy
+
   has_many :friends, foreign_key: :friend_id,
                      class_name: 'Friend',
                      dependent: :destroy

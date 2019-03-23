@@ -25,6 +25,11 @@ class DashboardFacade
     end
   end
 
+  def friends(current_user)
+    User.joins('JOIN friends ON users.id = friends.friend_id')
+        .where(friends: {user: current_user})
+  end
+
   def service
     GithubService.new(@user_token)
   end
