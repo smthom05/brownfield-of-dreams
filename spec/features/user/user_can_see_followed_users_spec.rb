@@ -15,7 +15,7 @@ feature "As a logged in user" do
             facade = DashboardFacade.new(ENV['github_user_token'])
 
             counter = 0
-            save_and_open_page
+      
             facade.followed.each do |f|
               expect(page).to have_css('.followed-user')
 
