@@ -19,15 +19,17 @@ feature 'as a user' do
             OmniAuth.config.test_mode = true
             OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
               provider: 'GitHub',
+              uid: ENV['PR_GITHUB_UID'],
               credentials: {
-                token: ENV['github_user_token']
+                token: ENV['PR_GITHUB_TOKEN']
               }
               })
 
             click_link 'Connect to GitHub'
             user = User.last
             expect(user.id).to eq(@user.id)
-            expect(user.token).to eq(ENV['github_user_token'])
+            expect(user.token).to eq(ENV['PR_GITHUB_TOKEN'])
+            expect(user.uid).to eq(ENV['PR_GITHUB_UID'].to_i)
 
             expect(page).to_not have_link('Connect to GitHub')
             expect(page).to have_content('GitHub')
