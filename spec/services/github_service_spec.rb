@@ -13,7 +13,7 @@ describe GithubService do
     describe '#get_repos' do
       it 'returns a hash of github repository data' do
         VCR.use_cassette("github_current_users_repos") do
-          token = ENV["github_user_token"]
+          token = ENV["PR_GITHUB_TOKEN"]
           service = GithubService.new(token)
 
           result = service.get_repos
@@ -27,7 +27,7 @@ describe GithubService do
      describe '#get_followers' do
       it 'returns a hash of github followers data' do
         VCR.use_cassette("github_current_users_followers") do
-          token = ENV["github_user_token"]
+          token = ENV["PR_GITHUB_TOKEN"]
           service = GithubService.new(token)
 
           result = service.get_followers
@@ -41,7 +41,7 @@ describe GithubService do
     describe '#get_followed' do
      it 'returns a hash of github followed user data' do
        VCR.use_cassette("github_current_users_followed") do
-         token = ENV["github_user_token"]
+         token = ENV["PR_GITHUB_TOKEN"]
          service = GithubService.new(token)
 
          result = service.get_followed

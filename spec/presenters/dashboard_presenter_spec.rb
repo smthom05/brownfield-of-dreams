@@ -11,7 +11,7 @@ describe DashboardFacade do
     describe '#repos' do
       it 'returns five repos' do
         VCR.use_cassette('github_current_users_repos') do
-          token = ENV['github_user_token']
+          token = ENV['PR_GITHUB_TOKEN']
           df = DashboardFacade.new(token)
 
           df.repos
@@ -22,7 +22,7 @@ describe DashboardFacade do
     describe '#followers' do
       it 'returns all followers' do
         VCR.use_cassette('github_current_users_followers') do
-          token = ENV['github_user_token']
+          token = ENV['PR_GITHUB_TOKEN']
           df = DashboardFacade.new(token)
 
           df.followers
@@ -33,7 +33,7 @@ describe DashboardFacade do
     describe '#followed' do
       it 'returns all followed users' do
         VCR.use_cassette('github_current_users_followed') do
-          token = ENV['github_user_token']
+          token = ENV['PR_GITHUB_TOKEN']
           df = DashboardFacade.new(token)
 
           df.followed
