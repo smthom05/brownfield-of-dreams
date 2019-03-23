@@ -6,13 +6,13 @@ feature "As a logged in user" do
       VCR.use_cassette('github_current_users_repos', :allow_playback_repeats => true) do
         VCR.use_cassette('github_current_users_followers', :allow_playback_repeats => true) do
           VCR.use_cassette('github_current_users_followed', :allow_playback_repeats => true) do
-            user = create(:user, token: ENV['github_user_token'])
+            user = create(:user, token: ENV['PR_GITHUB_TOKEN'])
             login_as(user)
 
             expect(page).to have_content('Followed')
             expect(page).to have_css('.followed')
 
-            facade = DashboardFacade.new(ENV['github_user_token'])
+            facade = DashboardFacade.new(ENV['PR_GITHUB_TOKEN'])
 
             counter = 0
       

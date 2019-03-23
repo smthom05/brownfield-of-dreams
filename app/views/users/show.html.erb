@@ -3,7 +3,7 @@
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <% if !current_user.token %>
-    <%= link_to "Connect to GitHub", github_oauth_path %>
+    <%= link_to "Connect to GitHub", github_oauth_path, class: "btn btn-primary mb1 bg-teal" %>
   <% end %>
   <h3>Account Details</h3>
   <ul>
@@ -46,6 +46,6 @@
       <% end %>
       </ul>
     </section>
-  </section>  
+  </section>
   <% end %>
 </section>
