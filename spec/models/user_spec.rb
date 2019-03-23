@@ -8,6 +8,10 @@ RSpec.describe User, type: :model do
     it {should validate_uniqueness_of(:uid)}
   end
 
+  describe 'relationships' do
+    it {should have_many :friends}
+  end
+
   describe 'roles' do
     it 'can be created as default user' do
       user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
