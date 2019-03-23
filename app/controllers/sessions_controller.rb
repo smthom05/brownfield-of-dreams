@@ -15,7 +15,9 @@ class SessionsController < ApplicationController
   private
 
   def create_token
-    current_user.update_attribute(:token, request.env['omniauth.auth']['credentials']['token'])
+    oauth_hash = request.env['omniauth.auth']
+    current_user.update_attribute(:token, oauth_hash['credentials']['token'])
+    current_user.update_attribute(:uid, oauth_hash['uid'])
     redirect_to dashboard_path
   end
 
