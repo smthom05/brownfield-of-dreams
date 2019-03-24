@@ -54,5 +54,18 @@ describe DashboardFacade do
         expect(df.friends(user_1)).to eq([user_2])
       end
     end
+
+    describe '#bookmarks(current_user)' do
+      it 'returns a hash of bookmarked videos keyed by tutorial' do
+        user = create(:user)
+        tutorial = create(:tutorial)
+        video = create(:video, tutorial_id: tutorial.id)
+        uservideo = create(:user_video, user_id: user.id, video_id: video.id)
+        token = ENV['PR_GITHUB_TOKEN']
+        df = DashboardFacade.new(token)
+
+        expect(df.bookmarks(user).keys).to eq([tutorial.title])
+      end
+    end
   end
 end
