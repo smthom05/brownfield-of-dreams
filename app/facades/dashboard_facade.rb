@@ -30,6 +30,10 @@ class DashboardFacade
         .where(friends: {user_id: current_user.id})
   end
 
+  def bookmarks(user)
+    user.bookmarks.group_by(&:tutorial_title)
+  end
+
   def service
     GithubService.new(@user_token)
   end
