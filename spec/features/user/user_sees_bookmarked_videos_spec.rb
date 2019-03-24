@@ -14,7 +14,7 @@ feature 'As a logged in user' do
       expect(page).to have_css('.bookmarks')
       within '.bookmarks' do
         expect(page).to have_content(tutorial.title)
-        expect(page).to have_content(video.title)
+        expect(page).to have_link(video.title)
       end
     end
   end
