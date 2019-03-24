@@ -3,7 +3,7 @@
   <hr>
 </div>
 <section class="tutorials col md-col-8">
-  <% @tutorials.each do |tutorial| %>
+  <% facade.tutorials.each do |tutorial| %>
     <div class="tutorial">
       <img class="thumbnail col md-col-3" src= <%="#{tutorial.thumbnail}" %> >
       <div class="tutorial-description col md-col-9">
@@ -15,7 +15,7 @@
   <hr>
   <br>
   <div class="paginater">
-    <%= will_paginate @tutorials %>
+    <%= will_paginate facade.tutorials %>
   </div>
 </section>
 <aside class="categories col md-col-4">
