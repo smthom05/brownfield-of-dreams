@@ -13,9 +13,9 @@ feature 'as a user' do
     end
 
     it 'clicks link and is routed to GitHub' do
-      VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
-        VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
-          VCR.use_cassette('github_other_users_followed', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_other_users_repos', allow_playback_repeats: true) do
+        VCR.use_cassette('github_other_users_followers', allow_playback_repeats: true) do
+          VCR.use_cassette('github_other_users_followed', allow_playback_repeats: true) do
             OmniAuth.config.test_mode = true
             OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
               provider: 'GitHub',
