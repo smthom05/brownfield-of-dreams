@@ -41,6 +41,26 @@ RSpec.describe User, type: :model do
         expect(user_1.not_friended?(user_2.uid)).to eq(false)
       end
     end
+
+    describe '#bookmarks' do
+      it 'returns an array of all bookmarked videos' do
+        user = create(:user)
+        tutorial = create(:tutorial)
+        tutorial_2 = create(:tutorial)
+        tutorial_3 = create(:tutorial)
+        video = create(:video, tutorial_id: tutorial_3.id)
+        video_2 = create(:video, tutorial_id: tutorial.id)
+        video_3 = create(:video, tutorial_id: tutorial_2.id)
+        uservideo = create(:user_video, user_id: user.id, video_id: video_2.id)
+        uservideo_2 = create(:user_video, user_id: user.id, video_id: video_3.id)
+        uservideo_3 = create(:user_video, user_id: user.id, video_id: video.id)
+
+        expected = [tutorial.title, tutorial_2.title, tutorial_3.title]
+        actual = user.bookmarks.map {|b| b.tutorial_title }
+
+        expect(actual).to eq(expected)
+      end
+    end
   end
 
   describe '::find_token(user_id)' do

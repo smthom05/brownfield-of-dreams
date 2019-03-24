@@ -32,4 +32,17 @@ class User < ApplicationRecord
 
     friend.class == NilClass
   end
+
+  def bookmarks
+    Video.select('videos.title video,
+                 tutorials.title tutorial_title,
+                 users.id uid,
+                 tutorials.id tutorial_id,
+                 user_videos.user_id,
+                 user_videos.video_id')
+        .joins(:tutorial, :users)
+        .where(users: {id: id})
+        .order('tutorial_id')
+  end
+
 end

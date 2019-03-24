@@ -10,8 +10,18 @@
     <li> <%= current_user.first_name  %> <%= current_user.last_name %> </li>
     <li> <%= current_user.email%> </li>
   </ul>
-  <section>
+  <section class='bookmarks'>
     <h1>Bookmarked Segments</h1>
+    <% facade.bookmarks(current_user).each do |tutorial, videos| %>
+      <h3><%= tutorial %></h3>
+      <ul>
+      <% videos.each do |video| %>
+        <li>
+          <%= link_to video.video, "/tutorials/#{video.tutorial_id}?video_id=#{video.video_id}" %>
+        </li>
+      <% end %>
+      </ul>
+    <% end %>
   </section>
   <% if current_user.token %>
   <section class='github'>
