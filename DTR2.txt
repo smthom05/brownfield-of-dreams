@@ -1,0 +1,54 @@
+Project: Brownfield of Dreams
+
+Members: Scott Thomas, Peregrine Balas
+
+Goals/Expectations:
+Better overall process in building app,
+Work with and appreciate inherited code,
+Rubric 3+,
+Exposure to OAuth/Omniauth and sending emails via an app
+
+Team Strengths:
+Adaptable,
+Willingness to commit time/energy/focus,
+Well tempered to stress,
+Previous experience working together
+
+Overcoming Obstacles:
+See above,
+Open communication,
+Brainstorming/trying things out
+
+Schedule:
+Daily timeframe: ~10a.m. - 6p.m. @ Turing
+Scott: Chiropractor appt. Sat 11:30a.m.
+
+Communication Expectations:
+Slack for PRs,
+Discuss all PRs before merging,
+Update partner if schedule changes
+
+Abilities/Growth Expectations:
+Better overall process in building app,
+Better test suite/app's performance,
+Improve recognizing code smells/bugs/flaws/etc.
+
+Workload Expectations:
+Split user stories as needed to each contribute ~equal lines of code/commits
+Complete all "To Do's" by EOD Tuesday
+
+Workflow Expectations:
+Go over daily work in the morning,
+Practice individually spiking,
+Pair after spikes,
+Determine Issues to work on individually as a team,
+Refactor as we go - Save last day for final refactors
+
+Feedback Expectations:
+
+Project Tools:
+GitHub Issues
+
+
+Weekend:
+Get to issue #27,

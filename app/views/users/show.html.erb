@@ -29,9 +29,12 @@
     <section class='followers'>
       <h2>Followers</h2>
       <ul>
-      <% facade.followers.each do |follower| %>
-        <li class='follower'>
-          <%= link_to follower.handle, follower.url, class: follower.handle %>
+      <% facade.followers.each do |f| %>
+        <li class='follower' id=<%= f.handle %>>
+          <%= link_to f.handle, f.url, class: f.handle %>
+          <% if f.exists? && current_user.not_friended?(f.uid) %>
+            <%= link_to "Add Friend", friends_path(friend: f.uid), method: :post, class: "add-friend" %>
+          <% end %>
         </li>
       <% end %>
       </ul>
@@ -40,11 +43,23 @@
       <h2>Followed</h2>
       <ul>
       <% facade.followed.each do |f| %>
-        <li class='followed-user'>
+        <li class='followed-user' id=<%= f.handle %>>
           <%= link_to f.handle, f.url, class: f.handle %>
+          <% if f.exists? && current_user.not_friended?(f.uid) %>
+            <%= link_to "Add Friend", friends_path(friend: f.uid), method: :post, class: "add-friend" %>
+          <% end %>
         </li>
       <% end %>
       </ul>
+    </section>
+
+    <section class='friends'>
+      <h2>Friends</h2>
+      <ul>
+      <% facade.friends(current_user).each do |f| %>
+        <li> <%= "#{f.first_name} #{f.last_name}"  %> </li>
+      <% end %>
+    </ul>
     </section>
   </section>
   <% end %>
