@@ -21,8 +21,8 @@ feature 'As a logged in user' do
     end
 
     it 'sees a list of five repos' do
-      VCR.use_cassette('github_current_users_followers', :allow_playback_repeats => true) do
-        VCR.use_cassette('github_current_users_repos', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_current_users_followers', allow_playback_repeats: true) do
+        VCR.use_cassette('github_current_users_repos', allow_playback_repeats: true) do
           user = create(:user, token: ENV['PR_GITHUB_TOKEN'])
 
           visit '/'
@@ -65,9 +65,9 @@ feature 'As a logged in user' do
     end
 
     it 'sees only five repos of current user' do
-      VCR.use_cassette('github_other_users_repos', :allow_playback_repeats => true) do
-        VCR.use_cassette('github_other_users_followers', :allow_playback_repeats => true) do
-          VCR.use_cassette('github_other_users_followed', :allow_playback_repeats => true) do
+      VCR.use_cassette('github_other_users_repos', allow_playback_repeats: true) do
+        VCR.use_cassette('github_other_users_followers', allow_playback_repeats: true) do
+          VCR.use_cassette('github_other_users_followed', allow_playback_repeats: true) do
 
             user_2 = create(:user, token: ENV['ST_GITHUB_TOKEN'])
 
