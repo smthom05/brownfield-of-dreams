@@ -91,8 +91,8 @@ ActiveRecord::Schema.define(version: 2019_03_23_211727) do
     t.index ["tutorial_id"], name: "index_videos_on_tutorial_id"
   end
 
-  add_foreign_key "friends", "friends"
   add_foreign_key "friends", "users"
+  add_foreign_key "friends", "users", column: "friend_id"
   add_foreign_key "user_videos", "users"
   add_foreign_key "user_videos", "videos"
 end

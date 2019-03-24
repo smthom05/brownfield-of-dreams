@@ -27,7 +27,7 @@ class DashboardFacade
 
   def friends(current_user)
     User.joins('JOIN friends ON users.id = friends.friend_id')
-        .where(friends: {user: current_user})
+        .where(friends: {user_id: current_user.id})
   end
 
   def service
