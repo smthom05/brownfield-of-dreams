@@ -41,5 +41,18 @@ describe DashboardFacade do
       end
     end
 
+    describe '#friends' do
+      it 'returns all friends users' do
+        user_1 = create(:user, uid: 1)
+        user_2 = create(:user, uid: 2)
+
+        Friend.create(user_id: user_1.id, friend_id: user_2.id)
+
+        token = ENV['PR_GITHUB_TOKEN']
+        df = DashboardFacade.new(token)
+
+        expect(df.friends(user_1)).to eq([user_2])
+      end
+    end
   end
 end
