@@ -28,6 +28,21 @@ RSpec.describe User, type: :model do
     end
   end
 
+  describe 'instance methods' do
+    describe '#not_friended?' do
+      it 'returns a boolean checking if they are friends' do
+        user_1 = create(:user, uid: 1)
+        user_2 = create(:user, uid: 2)
+
+        expect(user_1.not_friended?(user_2.uid)).to eq(true)
+
+        Friend.create(user_id: user_1.id, friend_id: user_2.id)
+
+        expect(user_1.not_friended?(user_2.uid)).to eq(false)
+      end
+    end
+  end
+
   describe '::find_token(user_id)' do
     it 'returns the token for the specified user' do
       user = create(:user, token: "ailrtjpoaerihgoaeirihgoarihjgoaerjg")
