@@ -1,6 +1,4 @@
-# migration to create Users class
 class CreateUsers < ActiveRecord::Migration[5.2]
-  # frozen_string_literal: true
   def change
     create_table :users do |t|
       t.string  :email, index: true
