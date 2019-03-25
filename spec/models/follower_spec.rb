@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Follower" do
+describe 'Follower' do
   it 'exists' do
     data = {login: 'x', html_url: 'x'}
     follower = Follower.new(data)
