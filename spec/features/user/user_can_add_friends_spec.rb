@@ -9,7 +9,8 @@ feature 'As a logged in user' do
           user_2 = create(:user, token: ENV['ST_GITHUB_TOKEN'], uid: ENV['ST_GITHUB_UID'])
           login_as(user)
 
-          expect(page).to have_link("Add Friend", count: 2)
+          expect(page).to have_link('Add Friend', count: 2)
+          expect(page).to_not have_content('Friends')
         end
       end
     end
@@ -21,15 +22,12 @@ feature 'As a logged in user' do
           user_2 = create(:user, first_name: "Scott", last_name: "Thomas", token: ENV['ST_GITHUB_TOKEN'], uid: ENV['ST_GITHUB_UID'])
           login_as(user)
 
-          expect(page).to have_content("Friends")
-          within '.friends' do
-            expect(page).to_not have_content('smthom05')
-          end
-
           within '.followed' do
             click_link "Add Friend"
           end
 
+          expect(page).to have_content("Friends")
+          expect(page).to have_css('.friends')
           within '.friends' do
             expect(page).to have_content('Scott Thomas')
           end
