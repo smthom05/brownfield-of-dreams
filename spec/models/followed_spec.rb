@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Followed" do
+describe 'Followed' do
   it 'exists' do
     data = {login: 'followed_user', html_url: 'github.com/followed_user'}
     followed = Followed.new(data)

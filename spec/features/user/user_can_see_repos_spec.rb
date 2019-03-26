@@ -8,7 +8,7 @@ feature 'As a logged in user' do
 
       visit '/'
 
-      click_on "Sign In"
+      click_on 'Sign In'
 
       expect(current_path).to eq(login_path)
 
@@ -17,7 +17,7 @@ feature 'As a logged in user' do
 
       click_on 'Log In'
 
-      expect(page).to_not have_content("Repositories")
+      expect(page).to_not have_content('Repositories')
     end
 
     it 'sees a list of five repos' do
@@ -27,7 +27,7 @@ feature 'As a logged in user' do
 
           visit '/'
 
-          click_on "Sign In"
+          click_on 'Sign In'
 
           expect(current_path).to eq(login_path)
 

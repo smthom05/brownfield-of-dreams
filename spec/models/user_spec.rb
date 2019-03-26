@@ -56,7 +56,7 @@ RSpec.describe User, type: :model do
         uservideo_3 = create(:user_video, user_id: user.id, video_id: video.id)
 
         expected = [tutorial.title, tutorial_2.title, tutorial_3.title]
-        actual = user.bookmarks.map {|b| b.tutorial_title }
+        actual = user.bookmarks.map(&:tutorial_title)
 
         expect(actual).to eq(expected)
       end
@@ -65,8 +65,8 @@ RSpec.describe User, type: :model do
 
   describe '::find_token(user_id)' do
     it 'returns the token for the specified user' do
-      user = create(:user, token: "ailrtjpoaerihgoaeirihgoarihjgoaerjg")
-      create(:user, token: "zoidjtoainewgorngoaitrfgoigjsroitgr")
+      user = create(:user, token: 'ailrtjpoaerihgoaeirihgoarihjgoaerjg')
+      create(:user, token: 'zoidjtoainewgorngoaitrfgoigjsroitgr')
 
       expect(User.find_token(user.id)).to eq(user.token)
     end

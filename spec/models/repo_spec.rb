@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Repo" do
+describe 'Repo' do
   it 'exists' do
     data = {name: 'x', html_url: 'x'}
     repo = Repo.new(data)
