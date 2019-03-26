@@ -36,6 +36,7 @@ class SessionsController < ApplicationController
 
   def set_current_user(user)
     session[:user_id] = user.id
+    flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
     redirect_to dashboard_path
   end
 
