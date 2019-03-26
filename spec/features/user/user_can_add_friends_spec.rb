@@ -19,11 +19,11 @@ feature 'As a logged in user' do
       VCR.use_cassette('github_current_users_followers', allow_playback_repeats: true) do
         VCR.use_cassette('github_current_users_repos', allow_playback_repeats: true) do
           user = create(:user, token: ENV['PR_GITHUB_TOKEN'])
-          user_2 = create(:user, first_name: "Scott", last_name: "Thomas", token: ENV['ST_GITHUB_TOKEN'], uid: ENV['ST_GITHUB_UID'])
+          user_2 = create(:user, first_name: 'Scott', last_name: 'Thomas', token: ENV['ST_GITHUB_TOKEN'], uid: ENV['ST_GITHUB_UID'])
           login_as(user)
 
           within '.followed' do
-            click_link "Add Friend"
+            click_link 'Add Friend'
           end
 
           expect(page).to have_content("Friends")
@@ -32,7 +32,7 @@ feature 'As a logged in user' do
             expect(page).to have_content('Scott Thomas')
           end
 
-          expect(page).to_not have_link("Add Friend")
+          expect(page).to_not have_link('Add Friend')
         end
       end
     end

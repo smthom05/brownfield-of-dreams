@@ -7,7 +7,7 @@ describe 'User' do
 
       visit '/'
 
-      click_on "Sign In"
+      click_on 'Sign In'
 
       expect(current_path).to eq(login_path)
 
@@ -24,8 +24,8 @@ describe 'User' do
   end
 
   it 'can log out', :js do
-    json_response = File.open("./fixtures/github_mock_repos.json")
-    stub_request(:get, "https://api.github.com/user/repos").to_return(status: 200, body: json_response)
+    json_response = File.open('./fixtures/github_mock_repos.json')
+    stub_request(:get, 'https://api.github.com/user/repos').to_return(status: 200, body: json_response)
     user = create(:user)
 
     visit login_path
@@ -48,8 +48,8 @@ describe 'User' do
 
   it 'is shown an error when incorrect info is entered' do
     user = create(:user)
-    fake_email = "email@email.com"
-    fake_password = "123"
+    fake_email = 'email@email.com'
+    fake_password = '123'
 
     visit login_path
 
@@ -58,6 +58,6 @@ describe 'User' do
 
     click_on 'Log In'
 
-    expect(page).to have_content("Looks like your email or password is invalid")
+    expect(page).to have_content('Looks like your email or password is invalid')
   end
 end

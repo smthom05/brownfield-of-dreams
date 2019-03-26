@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'vister can create an account', :js do
-  it ' visits the home page' do
+  it 'visits the home page' do
     VCR.use_cassette('github_current_users_repos') do
       email = 'jimbob@aol.com'
       first_name = 'Jim'
