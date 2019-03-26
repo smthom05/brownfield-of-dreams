@@ -17,7 +17,7 @@ describe TutorialFacade do
       video1 = create(:video, tutorial_id: tutorial.id)
       video2 = create(:video, tutorial_id: tutorial.id)
       video3 = create(:video, tutorial_id: tutorial.id)
-
+      
       presenter = TutorialFacade.new(tutorial)
 
       expect(presenter.current_video.id).to eq(video1.id)

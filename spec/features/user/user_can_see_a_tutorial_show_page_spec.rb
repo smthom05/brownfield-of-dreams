@@ -25,7 +25,7 @@ feature 'As a logged in user' do
     it 'does not error out when there are no videos' do
       login_as(@user)
       visit tutorial_path(@tutorial_2.id)
-      save_and_open_page
+
       expect(page).to have_content('Videos')
     end
   end
