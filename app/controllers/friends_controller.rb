@@ -4,8 +4,7 @@ class FriendsController < ApplicationController
     new_friend = Friend.new(friend_id: friend.id, user_id: current_user.id)
     unless new_friend.save
       flash[:error] = "Invalid Friendship"
-    end
-    
+    end  
     redirect_to dashboard_path
   end
 

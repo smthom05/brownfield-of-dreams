@@ -7,7 +7,8 @@ class ActivationController < ApplicationController
       redirect_to dashboard_path
     else
       # TODO Test
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
+      four_oh_four
+      # render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
     end
   end
 end
