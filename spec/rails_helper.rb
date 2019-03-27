@@ -8,6 +8,7 @@ require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
 require 'support/helpers/authentication'
+require 'capybara/email/rspec'
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 VCR.configure do |config|
