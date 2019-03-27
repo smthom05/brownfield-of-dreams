@@ -64,14 +64,16 @@
       </ul>
     </section>
 
+    <% unless facade.friends(current_user).empty? %>
     <section class='friends'>
       <h2>Friends</h2>
       <ul>
-      <% facade.friends(current_user).each do |f| %>
-        <li> <%= "#{f.first_name} #{f.last_name}"  %> </li>
-      <% end %>
+        <% facade.friends(current_user).each do |f| %>
+          <li> <%= "#{f.first_name} #{f.last_name}"  %> </li>
+        <% end %>
     </ul>
     </section>
+    <% end %>
   </section>
   <% end %>
 </section>

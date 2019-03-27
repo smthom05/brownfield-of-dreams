@@ -24,12 +24,13 @@ feature 'As a newly registered user' do
   end
 
   it 'an email is sent with a link to activate account' do
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
     expect(current_email.subject).to eq("Account Activation")
     expect(current_email).to have_content("Welcome #{@user.first_name} #{@user.last_name}!")
     expect(current_email).to have_link("Click here to activate your account.")
 
-    # current_email.click_link "Click here to activate your account."
-    visit activation_path(@user.id)
+    current_email.click_link "Click here to activate your account."
+  
     expect(current_path).to eq(dashboard_path)
     expect(page).to have_content("Your account has been activated!")
     expect(page).to have_content("Status: Active")

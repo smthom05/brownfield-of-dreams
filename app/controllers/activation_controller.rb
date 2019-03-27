@@ -1,13 +1,14 @@
 class ActivationController < ApplicationController
 
   def update
-    if params[:id] == current_user.id && !current_user.active?
+    if params[:id].to_i == current_user.id && !current_user.active?
       current_user.update_attribute(:active, true)
       flash[:notice] = "Your account has been activated!"
       redirect_to dashboard_path
     else
       # TODO Test
-         render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
+      four_oh_four
+      # render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
     end
   end
 end
