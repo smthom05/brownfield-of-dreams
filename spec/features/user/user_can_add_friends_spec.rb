@@ -36,5 +36,9 @@ feature 'As a logged in user' do
         end
       end
     end
+
+    it 'prompts if friendship is invalid' do
+      allow_any_instance_of(FriendsController).to receive(:save).and_return(false)
+    end
   end
 end
