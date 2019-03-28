@@ -28,7 +28,7 @@ module PersonalProject
         config.action_mailer.smtp_settings = {
           address:              'smtp.sendgrid.net',
           port:                 '587',
-          domain:               'https://brownfield-of-dreams-be1811.herokuapp.com/',
+          domain:               'https://brownfield-of-dreams-be1811.herokuapp.com',
           user_name:            ENV["SENDGRID_USERNAME"],
           password:             ENV["SENDGRID_PASSWORD"],
           authentication:       'plain',

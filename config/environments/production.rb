@@ -80,7 +80,7 @@ Rails.application.configure do
   # }
 
   # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'https://brownfield-of-dreams-be1811.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://brownfield-of-dreams-be1811.herokuapp.com' }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
