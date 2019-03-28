@@ -33,12 +33,12 @@ Rails.application.routes.draw do
   get '/dashboard', to: 'users#show'
   get '/about', to: 'about#show'
   get '/get_started', to: 'get_started#show'
-
-  # get '/activation', to: 'activation#index'
-  get "/activation/:id", to: 'activation#update', as: 'activation'
+  get '/activation/:id', to: 'activation#update', as: 'activation'
+  get '/invite', to: 'invite#new'
+  post '/invite', to: 'invite#create'
 
   # Is this being used?
-  get '/video', to: 'video#show'
+  # get '/video', to: 'video#show'
 
   resources :users, only: [:new, :create, :update, :edit]
   resources :friends, only: [:create]
