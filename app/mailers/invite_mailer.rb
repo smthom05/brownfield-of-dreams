@@ -3,8 +3,7 @@ class InviteMailer < ApplicationMailer
     @email = invitee[:email]
     @name = invitee[:name]
     @inviter = inviter
-    
-    mail(to: @email, subject: 'An Invite to Your Dreams!')
 
+    mail(to: @email, subject: 'An Invite to Your Dreams!')
   end
 end

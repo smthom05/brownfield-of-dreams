@@ -51,15 +51,12 @@ describe 'Tutorials API' do
 
       allow_any_instance_of(Admin::Api::V1::TutorialSequencerController).to receive(:current_user).and_return(admin)
 
-      tutorial1 = create(:tutorial)
-      tutorial2 = create(:tutorial)
+      tutorial = create(:tutorial)
 
-      video1 = create(:video, tutorial_id: tutorial1.id)
-      video2 = create(:video, tutorial_id: tutorial1.id)
-      video3 = create(:video, tutorial_id: tutorial2.id)
-      video4 = create(:video, tutorial_id: tutorial2.id)
+      video1 = create(:video, tutorial_id: tutorial.id)
+      video2 = create(:video, tutorial_id: tutorial.id)
 
-      get "/api/v1/tutorials/#{tutorial1.id}"
+      get "/api/v1/tutorials/#{tutorial.id}"
       json = JSON.parse(response.body)
 
       json['videos'].each do |video|
@@ -68,8 +65,8 @@ describe 'Tutorials API' do
       expect(json['videos'][0]['id']).to eq(video1.id)
       expect(json['videos'][1]['id']).to eq(video2.id)
 
-      put "/admin/api/v1/tutorial_sequencer/#{tutorial1.id}", params: {tutorial_sequencer: {_json: [video2.id, video1.id]}}
-      get "/api/v1/tutorials/#{tutorial1.id}"
+      put "/admin/api/v1/tutorial_sequencer/#{tutorial.id}", params: {tutorial_sequencer: {_json: [video2.id, video1.id]}}
+      get "/api/v1/tutorials/#{tutorial.id}"
       json = JSON.parse(response.body)
 
       counter = 1
