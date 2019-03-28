@@ -67,20 +67,20 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  # Setup the mailer config
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'https://brownfield-of-dreams-be1811.herokuapp.com',
-    :address => 'smtp.sendgrid.net',
-    :port => 587,
-    :authentication => :plain,
-    :enable_starttls_auto => true
-  }
+  # # Setup the mailer config
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => ENV['SENDGRID_USERNAME'],
+  #   :password => ENV['SENDGRID_PASSWORD'],
+  #   :domain => 'https://brownfield-of-dreams-be1811.herokuapp.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
 
-  config.action_mailer.default_url_options = { :host => "https://brownfield-of-dreams-be1811.herokuapp.com" }
+  config.action_mailer.default_url_options = { :host => 'https://brownfield-of-dreams-be1811.herokuapp.com' }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
