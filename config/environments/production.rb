@@ -68,7 +68,6 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
 
   # # Setup the mailer config
-  config.action_mailer.delivery_method = :smtp
   # config.action_mailer.perform_deliveries = true
   # config.action_mailer.smtp_settings = {
   #   :user_name => ENV['SENDGRID_USERNAME'],
@@ -80,6 +79,7 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
+  # config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { :host => 'https://brownfield-of-dreams-be1811.herokuapp.com/' }
 
 
