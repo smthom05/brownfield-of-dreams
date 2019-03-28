@@ -80,7 +80,7 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  config.action_mailer.default_url_options = { :host => "https://brownfield-of-dreams-be1811.herokuapp.com", port: 587 }
+  config.action_mailer.default_url_options = { :host => "https://brownfield-of-dreams-be1811.herokuapp.com" }
 
 
   # Ignore bad email addresses and do not raise email delivery errors.
