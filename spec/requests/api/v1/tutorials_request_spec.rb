@@ -65,8 +65,8 @@ describe 'Tutorials API' do
       json['videos'].each do |video|
         expect(video['position']).to eq(0)
       end
-      expect(json['videos'][0]['id']).to eq(9)
-      expect(json['videos'][1]['id']).to eq(10)
+      expect(json['videos'][0]['id']).to eq(video1.id)
+      expect(json['videos'][1]['id']).to eq(video2.id)
 
       put "/admin/api/v1/tutorial_sequencer/#{tutorial1.id}", params: {tutorial_sequencer: {_json: [video2.id, video1.id]}}
       get "/api/v1/tutorials/#{tutorial1.id}"
@@ -77,8 +77,8 @@ describe 'Tutorials API' do
         expect(video['position']).to eq(counter)
         counter += 1
       end
-      expect(json['videos'][0]['id']).to eq(10)
-      expect(json['videos'][1]['id']).to eq(9)
+      expect(json['videos'][0]['id']).to eq(video2.id)
+      expect(json['videos'][1]['id']).to eq(video1.id)
     end
   end
 end
