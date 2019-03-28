@@ -7,7 +7,7 @@ class InviteController < ApplicationController
     facade = InviteFacade.new(current_user.token)
     inviter = facade.inviter
     invitee = facade.email(params[:github_handle])
-    unless invitee[:name] == nil
+    unless invitee[:email] == nil
       InviteMailer.invite(inviter, invitee).deliver_now
       flash[:success] = 'Successfully sent invite!'
     else

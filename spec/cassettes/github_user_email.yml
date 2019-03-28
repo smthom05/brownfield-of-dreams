@@ -23,7 +23,7 @@ http_interactions:
       Server:
       - GitHub.com
       Date:
-      - Wed, 27 Mar 2019 23:06:53 GMT
+      - Thu, 28 Mar 2019 01:49:16 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -33,17 +33,17 @@ http_interactions:
       X-Ratelimit-Limit:
       - '5000'
       X-Ratelimit-Remaining:
-      - '4999'
+      - '4968'
       X-Ratelimit-Reset:
-      - '1553731613'
+      - '1553739935'
       Cache-Control:
       - private, max-age=60, s-maxage=60
       Vary:
       - Accept, Authorization, Cookie, X-GitHub-OTP
       Etag:
-      - W/"da859bdf2b9f844cc8ce252f9634dbfa"
+      - W/"17d33171cd6cbb42bf4741a99915e41f"
       Last-Modified:
-      - Thu, 21 Mar 2019 20:46:35 GMT
+      - Thu, 28 Mar 2019 01:42:36 GMT
       X-Oauth-Scopes:
       - repo, user
       X-Accepted-Oauth-Scopes:
@@ -69,12 +69,12 @@ http_interactions:
       Content-Security-Policy:
       - default-src 'none'
       X-Github-Request-Id:
-      - D0DF:2501:C4959:1C2530:5C9C020C
+      - DFF7:61C7:18CA07:35947A:5C9C281C
     body:
       encoding: ASCII-8BIT
       string: '{"login":"PeregrineReed","id":39976770,"node_id":"MDQ6VXNlcjM5OTc2Nzcw","avatar_url":"https://avatars3.githubusercontent.com/u/39976770?v=4","gravatar_id":"","url":"https://api.github.com/users/PeregrineReed","html_url":"https://github.com/PeregrineReed","followers_url":"https://api.github.com/users/PeregrineReed/followers","following_url":"https://api.github.com/users/PeregrineReed/following{/other_user}","gists_url":"https://api.github.com/users/PeregrineReed/gists{/gist_id}","starred_url":"https://api.github.com/users/PeregrineReed/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/PeregrineReed/subscriptions","organizations_url":"https://api.github.com/users/PeregrineReed/orgs","repos_url":"https://api.github.com/users/PeregrineReed/repos","events_url":"https://api.github.com/users/PeregrineReed/events{/privacy}","received_events_url":"https://api.github.com/users/PeregrineReed/received_events","type":"User","site_admin":false,"name":"Peregrine
-        Reed Balas","company":null,"blog":"","location":null,"email":null,"hireable":true,"bio":"Currently
-        enrolled in the Turing School of Software and Design Backend Engineering Program.","public_repos":40,"public_gists":8,"followers":12,"following":19,"created_at":"2018-06-06T02:37:21Z","updated_at":"2019-03-21T20:46:35Z","private_gists":5,"total_private_repos":0,"owned_private_repos":0,"disk_usage":782,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}'
+        Reed Balas","company":null,"blog":"","location":null,"email":"peregrinereedbalas@gmail.com","hireable":true,"bio":"Currently
+        enrolled in the Turing School of Software and Design Backend Engineering Program.","public_repos":40,"public_gists":8,"followers":12,"following":19,"created_at":"2018-06-06T02:37:21Z","updated_at":"2019-03-28T01:42:36Z","private_gists":5,"total_private_repos":0,"owned_private_repos":0,"disk_usage":782,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}'
     http_version: 
-  recorded_at: Wed, 27 Mar 2019 23:06:51 GMT
+  recorded_at: Thu, 28 Mar 2019 01:49:14 GMT
 recorded_with: VCR 4.0.0

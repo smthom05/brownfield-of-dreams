@@ -10,9 +10,8 @@ class InviteFacade
 
   def email(handle)
     response = service.get_id(handle)
-    id = response[:id]
     name = response[:name]
-    email = "#{id}+#{handle}@users.noreply.github.com"
+    email = response[:email]
     { name: name, email: email }
   end
 
