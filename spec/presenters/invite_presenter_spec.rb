@@ -19,7 +19,7 @@ describe 'InviteFacade' do
 
       expected = {
         name: 'Peregrine Reed Balas',
-        email: '39976770+PeregrineReed@users.noreply.github.com'
+        email: 'peregrinereedbalas@gmail.com'
       }
 
       expect(inv.email(@handle)).to eq(expected)
