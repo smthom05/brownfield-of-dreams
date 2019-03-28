@@ -44,4 +44,41 @@ describe 'Tutorials API' do
     expect(parsed[:videos].first[:id]).to eq(video1.id)
     expect(parsed[:videos].last[:id]).to eq(video2.id)
   end
+
+  context 'as an admin' do
+    it 'can change the sequence of tutorials' do
+      admin = create(:user, role: :admin)
+
+      allow_any_instance_of(Admin::Api::V1::TutorialSequencerController).to receive(:current_user).and_return(admin)
+
+      tutorial1 = create(:tutorial)
+      tutorial2 = create(:tutorial)
+
+      video1 = create(:video, tutorial_id: tutorial1.id)
+      video2 = create(:video, tutorial_id: tutorial1.id)
+      video3 = create(:video, tutorial_id: tutorial2.id)
+      video4 = create(:video, tutorial_id: tutorial2.id)
+
+      get "/api/v1/tutorials/#{tutorial1.id}"
+      json = JSON.parse(response.body)
+
+      json['videos'].each do |video|
+        expect(video['position']).to eq(0)
+      end
+      expect(json['videos'][0]['id']).to eq(9)
+      expect(json['videos'][1]['id']).to eq(10)
+
+      put "/admin/api/v1/tutorial_sequencer/#{tutorial1.id}", params: {tutorial_sequencer: {_json: [video2.id, video1.id]}}
+      get "/api/v1/tutorials/#{tutorial1.id}"
+      json = JSON.parse(response.body)
+
+      counter = 1
+      json['videos'].each do |video|
+        expect(video['position']).to eq(counter)
+        counter += 1
+      end
+      expect(json['videos'][0]['id']).to eq(10)
+      expect(json['videos'][1]['id']).to eq(9)
+    end
+  end
 end
