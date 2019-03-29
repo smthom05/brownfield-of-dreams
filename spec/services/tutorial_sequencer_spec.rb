@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe TutorialSequencer do
+describe TutorialSequencer do # rubocop:disable Metrics/BlockLength
   let(:tutorial) { create(:tutorial) }
   let(:vid_1)    { create(:video, tutorial: tutorial, position: 1) }
   let(:vid_2)    { create(:video, tutorial: tutorial, position: 2) }

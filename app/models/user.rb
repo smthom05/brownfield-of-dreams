@@ -27,8 +27,8 @@ class User < ApplicationRecord
 
   def not_friended?(github_id)
     friend = User.joins('JOIN friends ON users.id = friends.friend_id')
-        .where(friends: {user_id: id})
-        .find_by(uid: github_id)
+                 .where(friends: { user_id: id })
+                 .find_by(uid: github_id)
 
     friend.class == NilClass
   end
@@ -40,9 +40,8 @@ class User < ApplicationRecord
                  tutorials.id tutorial_id,
                  user_videos.user_id,
                  user_videos.video_id')
-        .joins(:tutorial, :users)
-        .where(users: {id: id})
-        .order('tutorial_id')
+         .joins(:tutorial, :users)
+         .where(users: { id: id })
+         .order('tutorial_id')
   end
-
 end

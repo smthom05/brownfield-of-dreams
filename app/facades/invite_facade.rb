@@ -1,11 +1,10 @@
 class InviteFacade
-
   def initialize(token)
     @token = token
   end
 
   def inviter
-    service.get_user[:name]
+    service.find_user[:name]
   end
 
   def email(handle)
@@ -18,5 +17,4 @@ class InviteFacade
   def service
     GithubService.new(@token)
   end
-
 end

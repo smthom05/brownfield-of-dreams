@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Video, type: :model do
-
   describe 'Relationships' do
     it { should have_many :users }
     it { should belong_to :tutorial }
@@ -12,5 +11,4 @@ RSpec.describe Video, type: :model do
     it { should validate_presence_of :video_id }
     it { should validate_presence_of :position }
   end
-
 end

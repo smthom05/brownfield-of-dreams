@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'As a newly registered user' do
+feature 'As a newly registered user' do # rubocop:disable Metrics/BlockLength
   before :each do
     @email = 'jimbob@aol.com'
     @first_name = 'Jim'
@@ -15,7 +15,7 @@ feature 'As a newly registered user' do
     fill_in 'user[last_name]', with: @last_name
     fill_in 'user[password]', with: @password
     fill_in 'user[password_confirmation]', with: @password
-    click_on'Create Account'
+    click_on 'Create Account'
     @user = User.last
   end
 
@@ -24,15 +24,19 @@ feature 'As a newly registered user' do
   end
 
   it 'an email is sent with a link to activate account' do
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
-    expect(current_email.subject).to eq("Account Activation")
-    expect(current_email).to have_content("Welcome #{@user.first_name} #{@user.last_name}!")
-    expect(current_email).to have_link("Click here to activate your account.")
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user)
+      .and_return(@user)
+    expect(current_email.subject).to eq('Account Activation')
+    expect(current_email)
+      .to have_content("Welcome #{@user.first_name} #{@user.last_name}!")
+    expect(current_email)
+      .to have_link('Click here to activate your account.')
 
-    current_email.click_link "Click here to activate your account."
-  
+    current_email.click_link 'Click here to activate your account.'
+
     expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("Your account has been activated!")
-    expect(page).to have_content("Status: Active")
+    expect(page).to have_content('Your account has been activated!')
+    expect(page).to have_content('Status: Active')
   end
 end

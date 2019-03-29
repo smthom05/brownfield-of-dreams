@@ -1,40 +1,25 @@
 require 'rails_helper'
 
-describe 'User' do
+describe 'User' do # rubocop:disable Metrics/BlockLength
+  before :each do
+    @user = create(:user)
+  end
+
   it 'user can sign in' do
-    VCR.use_cassette('github_current_users_repos') do
-      user = create(:user)
+    visit '/'
+    login_as(@user)
 
-      visit '/'
-
-      click_on 'Sign In'
-
-      expect(current_path).to eq(login_path)
-
-      fill_in 'session[email]', with: user.email
-      fill_in 'session[password]', with: user.password
-
-      click_on 'Log In'
-
-      expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("Logged in as #{user.first_name} #{user.last_name}")
-      expect(page).to have_content(user.email)
-      expect(page).to have_content(user.first_name)
-      expect(page).to have_content(user.last_name)
-    end
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content(
+      "Logged in as #{@user.first_name} #{@user.last_name}"
+    )
+    expect(page).to have_content(@user.email)
+    expect(page).to have_content(@user.first_name)
+    expect(page).to have_content(@user.last_name)
   end
 
   it 'can log out', :js do
-    json_response = File.open('./fixtures/github_mock_repos.json')
-    stub_request(:get, 'https://api.github.com/user/repos').to_return(status: 200, body: json_response)
-    user = create(:user)
-
-    visit login_path
-
-    fill_in'session[email]', with: user.email
-    fill_in'session[password]', with: user.password
-
-    click_on 'Log In'
+    login_as(@user)
 
     click_on 'Profile'
 
@@ -43,12 +28,11 @@ describe 'User' do
     click_on 'Log Out'
 
     expect(current_path).to eq(root_path)
-    expect(page).to_not have_content(user.first_name)
+    expect(page).to_not have_content(@user.first_name)
     expect(page).to have_content('SIGN IN')
   end
 
   it 'is shown an error when incorrect info is entered' do
-    user = create(:user)
     fake_email = 'email@email.com'
     fake_password = '123'
 
