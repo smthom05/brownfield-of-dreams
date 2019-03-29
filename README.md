@@ -10,6 +10,9 @@ This is a Ruby on Rails application used to organize YouTube content used for on
 
 A visitor is able to see all of the content on the application but in order to bookmark a segment they will need to register. Once registered a user can bookmark any of the segments in a tutorial page.
 
+### Database 
+![picture](DB-relationships.png)
+
 ## Local Setup
 
 First you'll need to setup an API key with YouTube and have it defined within `ENV['YOUTUBE_API_KEY']`. There will be one failing spec if you don't have this set up.
