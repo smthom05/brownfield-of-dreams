@@ -1,5 +1,4 @@
 class GithubService
-
   def initialize(token)
     @token = token
   end

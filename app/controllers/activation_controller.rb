@@ -1,5 +1,4 @@
 class ActivationController < ApplicationController
-
   def update
     if params[:id].to_i == current_user.id && !current_user.active?
       current_user.update_attribute(:active, true)

@@ -9,7 +9,7 @@ class TutorialSequencer
   end
 
   private
-  
+
   attr_reader :tutorial, :sequenced_video_ids
 
   def videos

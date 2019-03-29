@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'User' do
+describe 'User' do # rubocop:disable Metrics/BlockLength
   before :each do
     @user = create(:user)
   end

@@ -1,12 +1,18 @@
 AllCops:
   Exclude:
     - 'db/**/*'
-    - 'lib/tasks/*'
+    - 'lib/**/*'
+    - 'fixtures/*'
+    - 'active_designer/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'bin/**/*'
+
   # rubocop:disable <method>
 
 Style/ClassAndModuleChildren:
   Enabled: false
-  
+
 Style/FrozenStringLiteralComment:
   Enabled: false
 
@@ -20,4 +26,13 @@ Style/WordArray:
   Enabled: false
 
 Lint/UselessAssignment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Style/InverseMethods:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
   Enabled: false

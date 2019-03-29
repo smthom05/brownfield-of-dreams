@@ -8,7 +8,6 @@ describe WelcomeFacade do # rubocop:disable Metrics/BlockLength
     expect(wf).to be_a(WelcomeFacade)
   end
   describe 'instance methods' do
-
     before :each do
       @params = {}
       @user = create(:user)

@@ -1,5 +1,4 @@
 class InviteFacade
-
   def initialize(token)
     @token = token
   end
@@ -18,5 +17,4 @@ class InviteFacade
   def service
     GithubService.new(@token)
   end
-
 end

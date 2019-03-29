@@ -7,7 +7,6 @@ describe DashboardFacade do # rubocop:disable Metrics/BlockLength
     expect(df).to be_a(DashboardFacade)
   end
   describe 'instance methods' do # rubocop:disable Metrics/BlockLength
-
     describe '#repos' do
       it 'returns five repos' do
         VCR.use_cassette('github_current_users_repos') do

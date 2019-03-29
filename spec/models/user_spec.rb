@@ -1,15 +1,15 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User, type: :model do # rubocop:disable Metrics/BlockLength
   describe 'validations' do
-    it {should validate_presence_of(:email)}
-    it {should validate_presence_of(:first_name)}
-    it {should validate_presence_of(:password)}
-    it {should validate_uniqueness_of(:uid)}
+    it { should validate_presence_of(:email) }
+    it { should validate_presence_of(:first_name) }
+    it { should validate_presence_of(:password) }
+    it { should validate_uniqueness_of(:uid) }
   end
 
   describe 'relationships' do
-    it {should have_many :friends}
+    it { should have_many :friends }
   end
 
   describe 'roles' do
@@ -34,7 +34,7 @@ RSpec.describe User, type: :model do
     end
   end
 
-  describe 'instance methods' do
+  describe 'instance methods' do # rubocop:disable Metrics/BlockLength
     describe '#not_friended?' do
       it 'returns a boolean checking if they are friends' do
         user1 = create(:user, uid: 1)

@@ -10,7 +10,6 @@ describe 'Tutorials API' do # rubocop:disable Metrics/BlockLength
     video3 = create(:video, tutorial_id: tutorial2.id)
     video4 = create(:video, tutorial_id: tutorial2.id)
 
-
     get '/api/v1/tutorials'
 
     expect(response).to be_successful
@@ -45,7 +44,7 @@ describe 'Tutorials API' do # rubocop:disable Metrics/BlockLength
     expect(parsed[:videos].last[:id]).to eq(video2.id)
   end
 
-  context 'as an admin' do
+  context 'as an admin' do # rubocop:disable Metrics/BlockLength
     it 'can change the sequence of tutorials' do # rubocop:disable Metrics/BlockLength, Metrics/LineLength
       admin = create(:user, role: :admin)
 

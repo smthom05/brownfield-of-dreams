@@ -1,5 +1,4 @@
 class DashboardFacade
-
   def initialize(user_token)
     @user_token = user_token
   end
@@ -27,7 +26,7 @@ class DashboardFacade
 
   def friends(current_user)
     User.joins('JOIN friends ON users.id = friends.friend_id')
-        .where(friends: {user_id: current_user.id})
+        .where(friends: { user_id: current_user.id })
   end
 
   def bookmarks(user)
@@ -37,5 +36,4 @@ class DashboardFacade
   def service
     GithubService.new(@user_token)
   end
-
 end

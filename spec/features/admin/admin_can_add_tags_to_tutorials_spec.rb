@@ -6,7 +6,8 @@ describe 'An admin user can add tags to tutorials' do
     tutorial = create(:tutorial)
     video1 = create(:video, tutorial_id: tutorial.id)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+    allow_any_instance_of(ApplicationController)
+      .to receive(:current_user).and_return(admin)
 
     visit '/admin/dashboard'
 
@@ -16,7 +17,7 @@ describe 'An admin user can add tags to tutorials' do
 
     expect(current_path).to eq(edit_admin_tutorial_path(tutorial))
 
-    fill_in'tutorial[tag_list]', with: 'Ruby'
+    fill_in 'tutorial[tag_list]', with: 'Ruby'
     click_on 'Update Tags'
     visit root_path
 

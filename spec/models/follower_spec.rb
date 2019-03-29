@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'Follower' do
   it 'exists' do
-    data = {login: 'x', html_url: 'x'}
+    data = { login: 'x', html_url: 'x' }
     follower = Follower.new(data)
 
     expect(follower).to be_a(Follower)
@@ -10,7 +10,7 @@ describe 'Follower' do
 
   describe 'attributes' do
     it 'has a handle, url and uid' do
-      data = {login: 'name', html_url: 'url', id: '3'}
+      data = { login: 'name', html_url: 'url', id: '3' }
       follower = Follower.new(data)
 
       expect(follower.handle).to eq('name')
@@ -22,12 +22,12 @@ describe 'Follower' do
   describe 'instance methods' do
     it 'exists?' do
       create(:user, uid: 4)
-      data = {login: 'follower', html_url: 'github.com/follower', id: '4'}
+      data = { login: 'follower', html_url: 'github.com/follower', id: '4' }
       followed = Follower.new(data)
 
       expect(followed.exists?).to eq(true)
 
-      data = {login: 'follower', html_url: 'github.com/follower', id: '5'}
+      data = { login: 'follower', html_url: 'github.com/follower', id: '5' }
       followed = Follower.new(data)
 
       expect(followed.exists?).to eq(false)

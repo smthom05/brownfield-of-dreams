@@ -44,5 +44,4 @@ class SessionsController < ApplicationController
     flash[:error] = 'Looks like your email or password is invalid'
     render :new
   end
-
 end

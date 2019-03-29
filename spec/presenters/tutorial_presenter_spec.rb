@@ -35,7 +35,7 @@ describe TutorialFacade do # rubocop:disable Metrics/BlockLength
         expect(presenter.next_video).to eq(video2)
       end
 
-      it 'returns the last video if the current video is the last in the list' do
+      it 'returns last video if the current video is the last in the list' do
         learn_to_fight = create(:tutorial)
         rocky = create(:video, tutorial: learn_to_fight, position: 1)
         bloodsport = create(:video, tutorial: learn_to_fight, position: 2)

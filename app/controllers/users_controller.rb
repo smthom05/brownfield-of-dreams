@@ -9,12 +9,13 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def create # rubocop:disable Metrics/MethodLength
     user = User.create(user_params)
     if user.save
       session[:user_id] = user.id
       AccountActivationMailer.activate(user).deliver_now
-      flash[:notice] = 'This account has not yet been activated. Please check your email.'
+      flash[:notice] = 'This account has not yet been activated.' \
+                       ' Please check your email.'
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
