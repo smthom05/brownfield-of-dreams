@@ -5,7 +5,7 @@ class InviteFacade
   end
 
   def inviter
-    service.get_user[:name]
+    service.find_user[:name]
   end
 
   def email(handle)

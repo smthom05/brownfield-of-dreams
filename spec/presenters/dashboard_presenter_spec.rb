@@ -1,12 +1,12 @@
 require 'rails_helper'
-describe DashboardFacade do
+describe DashboardFacade do # rubocop:disable Metrics/BlockLength
   it 'exists' do
-    token = "token"
+    token = 'token'
     df = DashboardFacade.new(token)
 
     expect(df).to be_a(DashboardFacade)
   end
-  describe 'instance methods' do
+  describe 'instance methods' do # rubocop:disable Metrics/BlockLength
 
     describe '#repos' do
       it 'returns five repos' do
@@ -43,15 +43,15 @@ describe DashboardFacade do
 
     describe '#friends' do
       it 'returns all friends users' do
-        user_1 = create(:user, uid: 1)
-        user_2 = create(:user, uid: 2)
+        user1 = create(:user, uid: 1)
+        user2 = create(:user, uid: 2)
 
-        Friend.create(user_id: user_1.id, friend_id: user_2.id)
+        Friend.create(user_id: user1.id, friend_id: user2.id)
 
         token = ENV['PR_GITHUB_TOKEN']
         df = DashboardFacade.new(token)
 
-        expect(df.friends(user_1)).to eq([user_2])
+        expect(df.friends(user1)).to eq([user2])
       end
     end
 

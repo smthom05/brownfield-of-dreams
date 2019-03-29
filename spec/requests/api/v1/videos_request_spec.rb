@@ -6,7 +6,6 @@ describe 'Videos API' do
     video1 = create(:video, tutorial_id: tutorial1.id)
     video2 = create(:video, tutorial_id: tutorial1.id)
 
-
     get "/api/v1/videos/#{video1.id}"
 
     expect(response).to be_successful

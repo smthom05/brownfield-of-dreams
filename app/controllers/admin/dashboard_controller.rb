@@ -3,4 +3,3 @@ class Admin::DashboardController < Admin::BaseController
     @facade = AdminDashboardFacade.new
   end
 end
-

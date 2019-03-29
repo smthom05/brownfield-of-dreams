@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-describe GithubService do
-
+describe GithubService do # rubocop:disable Metrics/BlockLength
   it 'exists' do
     token = {}
     service = GithubService.new(token)
@@ -9,14 +8,14 @@ describe GithubService do
     expect(service).to be_a(GithubService)
   end
 
-  describe 'instance methods' do
-    describe '#get_repos' do
+  describe 'instance methods' do # rubocop:disable Metrics/BlockLength
+    describe '#find_repos' do
       it 'returns a hash of github repository data' do
         VCR.use_cassette('github_current_users_repos') do
           token = ENV['PR_GITHUB_TOKEN']
           service = GithubService.new(token)
 
-          result = service.get_repos
+          result = service.find_repos
 
           expect(result).to be_a(Array)
           expect(result[0]).to have_key(:id)
@@ -24,13 +23,13 @@ describe GithubService do
       end
     end
 
-    describe '#get_followers' do
+    describe '#find_followers' do
       it 'returns a hash of github followers data' do
         VCR.use_cassette('github_current_users_followers') do
           token = ENV['PR_GITHUB_TOKEN']
           service = GithubService.new(token)
 
-          result = service.get_followers
+          result = service.find_followers
 
           expect(result).to be_a(Array)
           expect(result[0]).to have_key(:id)
@@ -38,13 +37,13 @@ describe GithubService do
       end
     end
 
-    describe '#get_followed' do
+    describe '#find_followed' do
       it 'returns a hash of github followed user data' do
         VCR.use_cassette('github_current_users_followed') do
           token = ENV['PR_GITHUB_TOKEN']
           service = GithubService.new(token)
 
-          result = service.get_followed
+          result = service.find_followed
 
           expect(result).to be_a(Array)
           expect(result[0]).to have_key(:id)

@@ -1,21 +1,12 @@
 require 'rails_helper'
 
-feature 'As a logged in user' do
-  context 'when visiting /dashboard' do
+feature 'As a logged in user' do # rubocop:disable Metrics/BlockLength
+  context 'when visiting /dashboard' do # rubocop:disable Metrics/BlockLength
 
     it 'sees a GitHub section only if it has a token' do
       user = create(:user, token: nil)
 
-      visit '/'
-
-      click_on 'Sign In'
-
-      expect(current_path).to eq(login_path)
-
-      fill_in 'session[email]', with: user.email
-      fill_in 'session[password]', with: user.password
-
-      click_on 'Log In'
+      login_as(user)
 
       expect(page).to_not have_content('Repositories')
     end
@@ -56,7 +47,7 @@ feature 'As a logged in user' do
         expect(page).to have_link('apollo_14', href: 'https://github.com/PeregrineReed/apollo_14')
       end
     end
-      
+
     it 'sees only five repos of current user' do
       VCR.use_cassette('github_other_users_repos', allow_playback_repeats: true) do
         VCR.use_cassette('github_other_users_followers', allow_playback_repeats: true) do

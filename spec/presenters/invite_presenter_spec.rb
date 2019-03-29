@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 describe 'InviteFacade' do
-
   before :each do
     @handle = 'PeregrineReed'
     @token = ENV['PR_GITHUB_TOKEN']

@@ -14,14 +14,20 @@ RSpec.describe User, type: :model do
 
   describe 'roles' do
     it 'can be created as default user' do
-      user = User.create(email: 'user@email.com', password: 'password', first_name:'Jim', role: 0)
+      user = User.create(email: 'user@email.com',
+                         password: 'password',
+                         first_name: 'Jim',
+                         role: 0)
 
       expect(user.role).to eq('default')
       expect(user.default?).to be_truthy
     end
 
     it 'can be created as an Admin user' do
-      admin = User.create(email: 'admin@email.com', password: 'admin', first_name:'Bob', role: 1)
+      admin = User.create(email: 'admin@email.com',
+                          password: 'admin',
+                          first_name: 'Bob',
+                          role: 1)
 
       expect(admin.role).to eq('admin')
       expect(admin.admin?).to be_truthy
@@ -31,14 +37,14 @@ RSpec.describe User, type: :model do
   describe 'instance methods' do
     describe '#not_friended?' do
       it 'returns a boolean checking if they are friends' do
-        user_1 = create(:user, uid: 1)
-        user_2 = create(:user, uid: 2)
+        user1 = create(:user, uid: 1)
+        user2 = create(:user, uid: 2)
 
-        expect(user_1.not_friended?(user_2.uid)).to eq(true)
+        expect(user1.not_friended?(user2.uid)).to eq(true)
 
-        Friend.create(user_id: user_1.id, friend_id: user_2.id)
+        Friend.create(user_id: user1.id, friend_id: user2.id)
 
-        expect(user_1.not_friended?(user_2.uid)).to eq(false)
+        expect(user1.not_friended?(user2.uid)).to eq(false)
       end
     end
 
@@ -46,16 +52,16 @@ RSpec.describe User, type: :model do
       it 'returns an array of all bookmarked videos' do
         user = create(:user)
         tutorial = create(:tutorial)
-        tutorial_2 = create(:tutorial)
-        tutorial_3 = create(:tutorial)
-        video = create(:video, tutorial_id: tutorial_3.id)
-        video_2 = create(:video, tutorial_id: tutorial.id)
-        video_3 = create(:video, tutorial_id: tutorial_2.id)
-        uservideo = create(:user_video, user_id: user.id, video_id: video_2.id)
-        uservideo_2 = create(:user_video, user_id: user.id, video_id: video_3.id)
-        uservideo_3 = create(:user_video, user_id: user.id, video_id: video.id)
+        tutorial2 = create(:tutorial)
+        tutorial3 = create(:tutorial)
+        video = create(:video, tutorial_id: tutorial3.id)
+        video2 = create(:video, tutorial_id: tutorial.id)
+        video3 = create(:video, tutorial_id: tutorial2.id)
+        uservideo = create(:user_video, user_id: user.id, video_id: video2.id)
+        uservideo2 = create(:user_video, user_id: user.id, video_id: video3.id)
+        uservideo3 = create(:user_video, user_id: user.id, video_id: video.id)
 
-        expected = [tutorial.title, tutorial_2.title, tutorial_3.title]
+        expected = [tutorial.title, tutorial2.title, tutorial3.title]
         actual = user.bookmarks.map(&:tutorial_title)
 
         expect(actual).to eq(expected)

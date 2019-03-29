@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: DashboardFacade.new(current_user.token)#User.find_token(session[:user_id]))
+      facade: DashboardFacade.new(current_user.token)
     }
   end
 
@@ -27,5 +27,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end

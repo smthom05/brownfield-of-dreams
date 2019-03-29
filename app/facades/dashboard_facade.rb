@@ -5,21 +5,21 @@ class DashboardFacade
   end
 
   def repos
-    response = service.get_repos
+    response = service.find_repos
     response.map do |repo_data|
       Repo.new(repo_data)
     end[0..4]
   end
 
   def followers
-    response = service.get_followers
+    response = service.find_followers
     response.map do |follower_data|
       Follower.new(follower_data)
     end
   end
 
   def followed
-    response = service.get_followed
+    response = service.find_followed
     response.map do |followed_data|
       Followed.new(followed_data)
     end

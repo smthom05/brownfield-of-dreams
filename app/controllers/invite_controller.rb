@@ -1,13 +1,12 @@
 class InviteController < ApplicationController
 
-  def new
-  end
+  def new; end
 
   def create
     facade = InviteFacade.new(current_user.token)
     inviter = facade.inviter
     invitee = facade.email(params[:github_handle])
-    unless invitee[:email] == nil
+    if invitee[:email]
       InviteMailer.invite(inviter, invitee).deliver_now
       flash[:success] = 'Successfully sent invite!'
     else
@@ -15,5 +14,4 @@ class InviteController < ApplicationController
     end
     redirect_to dashboard_path
   end
-
 end

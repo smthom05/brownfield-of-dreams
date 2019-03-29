@@ -1,14 +1,21 @@
 require 'rails_helper'
 
 describe 'A registered user' do
+
+  before :each do
+    @tutorial= create(:tutorial, title: 'How to Tie Your Shoes')
+    @video = create(:video, title: 'The Bunny Ears Technique', tutorial: @tutorial)
+    @user = create(:user)
+  end
+
   it 'can add videos to their bookmarks' do
-    tutorial= create(:tutorial, title: 'How to Tie Your Shoes')
-    video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
-    user = create(:user)
+    # tutorial= create(:tutorial, title: 'How to Tie Your Shoes')
+    # video = create(:video, title: 'The Bunny Ears Technique', tutorial: tutorial)
+    # user = create(:user)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-    visit tutorial_path(tutorial)
+    visit tutorial_path(@tutorial)
 
     expect {
       click_button 'Bookmark'
@@ -18,13 +25,13 @@ describe 'A registered user' do
   end
 
   it 'can\'t add the same bookmark more than once' do
-    tutorial= create(:tutorial)
-    video = create(:video, tutorial_id: tutorial.id)
-    user = create(:user)
+    # tutorial= create(:tutorial)
+    # video = create(:video, tutorial_id: tutorial.id)
+    # user = create(:user)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
-    visit tutorial_path(tutorial)
+    visit tutorial_path(@tutorial)
 
     click_on 'Bookmark'
     expect(page).to have_content('Bookmark added to your dashboard')

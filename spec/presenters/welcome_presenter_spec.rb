@@ -1,5 +1,5 @@
 require 'rails_helper'
-describe WelcomeFacade do
+describe WelcomeFacade do # rubocop:disable Metrics/BlockLength
   it 'exists' do
     params = {}
     user = create(:user)
@@ -20,14 +20,14 @@ describe WelcomeFacade do
 
     it '#tutorials' do
       expected = Tutorial.all.pluck(:title)
-      actual = @wf.tutorials.map { |t| t.title }
+      actual = @wf.tutorials.map(&:title)
 
       expect(actual).to eq(expected)
     end
 
     it '#users_tutorials' do
       expected = Tutorial.all.pluck(:title)
-      actual = @wf.tutorials.map { |t| t.title }
+      actual = @wf.tutorials.map(&:title)
 
       expect(actual).to eq(expected)
     end
@@ -36,7 +36,7 @@ describe WelcomeFacade do
       user = nil
       wf = WelcomeFacade.new(@params, user)
       expected = Tutorial.first.title
-      actual = wf.tutorials.map { |t| t.title }[0]
+      actual = wf.tutorials.map(&:title)[0]
 
       expect(actual).to eq(expected)
     end

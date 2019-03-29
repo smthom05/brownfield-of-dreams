@@ -5,10 +5,10 @@ feature 'As a logged in user' do
     before :each do
       @user = create(:user)
       @tutorial = create(:tutorial)
-      @tutorial_2 = create(:tutorial)
-      @video_1 = create(:video, tutorial_id: @tutorial.id)
-      @video_2 = create(:video, tutorial_id: @tutorial.id)
-      @video_3 = create(:video, tutorial_id: @tutorial.id)
+      @tutorial2 = create(:tutorial)
+      @video1 = create(:video, tutorial_id: @tutorial.id)
+      @video2 = create(:video, tutorial_id: @tutorial.id)
+      @video3 = create(:video, tutorial_id: @tutorial.id)
     end
     it 'sees a list of videos in that tutorial when there are no videos' do
       login_as(@user)
@@ -16,15 +16,15 @@ feature 'As a logged in user' do
 
       within '.tutorial-videos' do
         expect(page).to have_css('.show-link', count: 3)
-        expect(page).to have_content(@video_1.title)
-        expect(page).to have_content(@video_2.title)
-        expect(page).to have_content(@video_3.title)
+        expect(page).to have_content(@video1.title)
+        expect(page).to have_content(@video2.title)
+        expect(page).to have_content(@video3.title)
       end
     end
 
     it 'does not error out when there are no videos' do
       login_as(@user)
-      visit tutorial_path(@tutorial_2.id)
+      visit tutorial_path(@tutorial2.id)
 
       expect(page).to have_content('Videos')
     end
