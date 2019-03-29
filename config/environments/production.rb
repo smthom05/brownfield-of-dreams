@@ -78,17 +78,17 @@ Rails.application.configure do
   #   :authentication => :plain,
   #   :enable_starttls_auto => true
   # }
-  
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { :host => 'smtp://localhost:1025' }
+
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.default_url_options = { :host => 'smtp://localhost:1025' }
 
   config.action_mailer.smtp_settings = {
-    address:              'smtp.sendgrid.net',
-    port:                 '587',
-    domain:               'https://brownfield-of-dreams-be1811.herokuapp.com',
-    user_name:            ENV["SENDGRID_USERNAME"],
+    user_name:            'apikey',
     password:             ENV["SENDGRID_PASSWORD"],
-    authentication:       'plain',
+    domain:               'yourdomain.com',
+    address:              'smtp.sendgrid.net',
+    port:                 587,
+    authentication:       :plain,
     enable_starttls_auto: true
   }
 
