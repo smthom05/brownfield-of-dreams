@@ -1,8 +1,11 @@
 require 'rails_helper'
 
-describe 'Followed' do
+describe 'Followed' do # rubocop:disable Metrics/BlockLength
   it 'exists' do
-    data = {login: 'followed_user', html_url: 'github.com/followed_user'}
+    data = {
+            login: 'followed_user',
+            html_url: 'github.com/followed_user'
+           }
     followed = Followed.new(data)
 
     expect(followed).to be_a(Followed)
@@ -10,7 +13,11 @@ describe 'Followed' do
 
   describe 'attributes' do
     it 'has a handle, url and uid' do
-      data = {login: 'followed_user', html_url: 'github.com/followed_user', id: '4'}
+      data = {
+              login: 'followed_user',
+              html_url: 'github.com/followed_user',
+              id: '4'
+             }
       followed = Followed.new(data)
 
       expect(followed.handle).to eq('followed_user')
@@ -22,12 +29,20 @@ describe 'Followed' do
   describe 'instance methods' do
     it 'exists?' do
       create(:user, uid: 4)
-      data = {login: 'followed_user', html_url: 'github.com/followed_user', id: '4'}
+      data = {
+              login: 'followed_user',
+              html_url: 'github.com/followed_user',
+              id: '4'
+             }
       followed = Followed.new(data)
 
       expect(followed.exists?).to eq(true)
 
-      data = {login: 'followed_user', html_url: 'github.com/followed_user', id: '5'}
+      data = {
+              login: 'followed_user',
+              html_url: 'github.com/followed_user',
+              id: '5'
+             }
       followed = Followed.new(data)
 
       expect(followed.exists?).to eq(false)

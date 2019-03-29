@@ -12,5 +12,4 @@ class Followed
   def exists?
     User.find_by(uid: @uid).class == User
   end
-
 end

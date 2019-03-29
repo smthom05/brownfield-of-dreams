@@ -1,9 +1,11 @@
 require 'spec_helper'
 
 ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
+require File.expand_path('../../config/environment', __FILE__) # rubocop:disable Style/ExpandPathArguments, Metrics/LineLength
 
-abort('The Rails environment is running in production mode!') if Rails.env.production?
+if Rails.env.production?
+  abort('The Rails environment is running in production mode!')
+end
 require 'rspec/rails'
 require 'vcr'
 require 'webmock/rspec'
@@ -21,7 +23,6 @@ VCR.configure do |config|
   config.filter_sensitive_data('<GITHUB_TOKEN_2>') { ENV['ST_GITHUB_TOKEN'] }
   # config.allow_http_connections_when_no_cassette = true
 end
-
 
 ActiveRecord::Migration.maintain_test_schema!
 
@@ -41,7 +42,7 @@ SimpleCov.start 'rails' do
 end
 
 Shoulda::Matchers.configure do |config|
-    config.integrate do |with|
+  config.integrate do |with|
     with.test_framework :rspec
     with.library :rails
   end

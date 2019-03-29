@@ -1,5 +1,4 @@
 class Follower
-
   attr_reader :handle,
               :url,
               :uid
@@ -13,5 +12,4 @@ class Follower
   def exists?
     User.find_by(uid: @uid).class == User
   end
-
 end

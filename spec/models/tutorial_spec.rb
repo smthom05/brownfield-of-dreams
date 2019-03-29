@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Tutorial, type: :model do
-
   describe 'Relationships' do
     it { should have_many :videos }
   end
@@ -21,5 +20,4 @@ RSpec.describe Tutorial, type: :model do
 
   describe 'Validations' do
   end
-
 end

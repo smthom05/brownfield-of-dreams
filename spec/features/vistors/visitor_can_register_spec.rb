@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'vister can create an account', :js do
-  it 'visits the home page' do
+describe 'vister can create an account', :js do # rubocop:disable Metrics/BlockLength, Metrics/LineLength
+  it 'visits the home page' do # rubocop:disable Metrics/BlockLength
     VCR.use_cassette('github_current_users_repos') do
       email = 'jimbob@aol.com'
       first_name = 'Jim'
@@ -29,14 +29,14 @@ describe 'vister can create an account', :js do
 
       expect(current_path).to eq(dashboard_path)
 
-      expect(page).to have_content('This account has not yet been activated. Please check your email.')
-      expect(page).to have_content("Status: Inactive")
+      expect(page)
+        .to have_content('This account has not yet been activated.' \
+                         ' Please check your email.')
+      expect(page).to have_content('Status: Inactive')
       expect(page).to have_content(email)
       expect(page).to have_content(first_name)
       expect(page).to have_content(last_name)
       expect(page).to_not have_content('Sign In')
-
-
     end
   end
 end

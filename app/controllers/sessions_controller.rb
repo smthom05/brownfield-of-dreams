@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    @user ||= User.new
+    @new ||= User.new
   end
 
   def create
@@ -27,22 +27,21 @@ class SessionsController < ApplicationController
   end
 
   def route_user(user)
-    authn_user(user) ? set_current_user(user) : error_prompt
+    authn_user(user) ? create_current_user(user) : error_prompt
   end
 
   def authn_user(user)
-    user && user.authenticate(params[:session][:password])
+    user&.authenticate(params[:session][:password])
   end
 
-  def set_current_user(user)
+  def create_current_user(user)
     session[:user_id] = user.id
     flash[:notice] = "Logged in as #{user.first_name} #{user.last_name}"
     redirect_to dashboard_path
   end
 
   def error_prompt
-    flash[:error] = "Looks like your email or password is invalid"
+    flash[:error] = 'Looks like your email or password is invalid'
     render :new
   end
-
 end

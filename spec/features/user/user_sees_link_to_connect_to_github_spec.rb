@@ -1,8 +1,7 @@
 require 'rails_helper'
 
-feature 'as a user' do
-  context 'when I visit my dashboard' do
-
+feature 'as a user' do # rubocop:disable Metrics/BlockLength
+  context 'when I visit my dashboard' do # rubocop:disable Metrics/BlockLength
     before :each do
       @user = create(:user)
       login_as(@user)
@@ -13,17 +12,20 @@ feature 'as a user' do
     end
 
     it 'clicks link and is routed to GitHub' do
-      VCR.use_cassette('github_other_users_repos', allow_playback_repeats: true) do
-        VCR.use_cassette('github_other_users_followers', allow_playback_repeats: true) do
-          VCR.use_cassette('github_other_users_followed', allow_playback_repeats: true) do
+      VCR.use_cassette('github_other_users_repos',
+                       allow_playback_repeats: true) do
+        VCR.use_cassette('github_other_users_followers',
+                         allow_playback_repeats: true) do
+          VCR.use_cassette('github_other_users_followed',
+                           allow_playback_repeats: true) do
             OmniAuth.config.test_mode = true
-            OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
+            OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new(
               provider: 'GitHub',
               uid: ENV['PR_GITHUB_UID'],
               credentials: {
                 token: ENV['PR_GITHUB_TOKEN']
               }
-              })
+            )
 
             click_link 'Connect to GitHub'
             user = User.last

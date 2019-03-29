@@ -1,10 +1,9 @@
 class GithubService
-
   def initialize(token)
     @token = token
   end
 
-  def get_user
+  def find_user
     get_json('/user')
   end
 
@@ -12,15 +11,15 @@ class GithubService
     get_json("/users/#{handle}")
   end
 
-  def get_repos
+  def find_repos
     get_json('/user/repos')
   end
 
-  def get_followers
+  def find_followers
     get_json('/user/followers')
   end
 
-  def get_followed
+  def find_followed
     get_json('/user/following')
   end
 
@@ -35,5 +34,4 @@ class GithubService
       faraday.adapter Faraday.default_adapter
     end
   end
-
 end
