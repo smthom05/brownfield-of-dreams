@@ -9,6 +9,15 @@ AllCops:
     - 'bin/**/*'
 
   # rubocop:disable <method>
+Metrics/MethodLength:
+  Exclude:
+    - 'app/controllers/users_controller.rb'
+
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/features/user/user_can_bookmark_a_video_spec.rb'
+    - 'spec/factories/tutorials.rb'
+    - 'spec/features/vistors/visitor_is_asked_to_log_in_when_bookmarking_spec.rb'
 
 Style/ClassAndModuleChildren:
   Enabled: false
